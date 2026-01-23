@@ -1,0 +1,7 @@
+npm i react-router-dom axios clsx
+npm i @tanstack/react-query
+npm i react-hook-form zod @hookform/resolvers
+npm i @reduxjs/toolkit react-redux
+
+*createSlice
+*feature-based structure (features/cart, features/ui)
