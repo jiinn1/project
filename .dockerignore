@@ -1,0 +1,10 @@
+.env
+.env.test
+node_modules
+target
+build
+dist
+.vscode
+.idea
+*.iml
+.DS_Store
