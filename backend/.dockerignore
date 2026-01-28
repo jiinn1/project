@@ -1,0 +1,38 @@
+# === Git / VCS ===
+.git
+.gitignore
+
+# === Java / build output ===
+target
+build
+out
+
+# === Maven / Gradle caches ===
+.mvn/wrapper/maven-wrapper.jar
+.gradle
+.mvn
+
+# === Logs ===
+*.log
+
+# === Env / secrets ===
+.env
+.env.*
+!.env.example
+
+# === IDE ===
+.idea
+.vscode
+*.iml
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Tests / coverage ===
+coverage
+test-results
+
+# === Docker / compose ===
+docker-compose*.yml
+Dockerfile*

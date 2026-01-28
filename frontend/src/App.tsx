@@ -3,7 +3,7 @@ import React from "react";
 const App: React.FC = () => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>🚀 Witaj w świecie podróży kosmicznych</h1>
+      <h1 style={styles.title}>🚀 papaapa w świecie podróży kosmicznych</h1>
 
       <p style={styles.text}>
         Kosmos to nieskończona przestrzeń pełna tajemnic, planet, gwiazd

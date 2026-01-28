@@ -1,24 +1,15 @@
-# Etap 1: budowanie produkcyjne
-FROM node:20-alpine AS build
+FROM node:20 AS base
 WORKDIR /app
 
-# Kopiowanie package.json i package-lock.json
-COPY package*.json ./
-
-# Instalacja zależności
+FROM base AS dep
+COPY package.json package-lock.json ./
 RUN npm ci
 
-# Kopiowanie reszty kodu
+FROM dep AS dev
 COPY . .
+EXPOSE 5173
+CMD ["npm","run","dev"]
 
-# Budowanie produkcyjne
+FROM dep AS build
+COPY . .
 RUN npm run build
-
-# Etap 2: serwowanie statycznych plików (Nginx)
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Skonfiguruj Nginx (opcjonalnie: pod Vite możesz dodać własny default.conf)
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]

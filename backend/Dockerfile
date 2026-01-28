@@ -1,23 +1,11 @@
-# Etap 1: budowanie aplikacji
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+FROM maven:3.9.9-eclipse-temurin-21 AS base
 WORKDIR /app
 
-# Kopiowanie plików projektu
+FROM base AS dep
 COPY pom.xml .
-COPY src ./src
+RUN mvn dependency:go-offline
 
-# Budowanie jar
-RUN mvn clean package -DskipTests
-
-# Etap 2: uruchomienie
-FROM eclipse-temurin:21-jdk-alpine
-WORKDIR /app
-
-# Skopiowanie jar z etapu build
-COPY --from=build /app/target/*.jar app.jar
-
-# Ustawienie portu
+FROM dep AS dev
+COPY . .
 EXPOSE 8080
-
-# Uruchomienie aplikacji
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["mvn", "spring-boot:run"]
