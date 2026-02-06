@@ -1,5 +1,6 @@
-package com.example.backend;
+package com.example.backend.test;
 
+import com.example.backend.BackendApplication;
 import org.springframework.boot.SpringApplication;
 
 public class TestBackendApplication {
